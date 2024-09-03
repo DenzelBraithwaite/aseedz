@@ -1,0 +1,75 @@
+:root {
+  --slate-950: #020617;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --white: #fefefe;
+  // --section-spacer: 2rem auto 7rem;
+  // --box-shadow: 0 0.25rem 0.5rem #00000014;
+
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+i,
+div,
+span,
+input,
+select,
+textarea,
+fieldset {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--white);
+}
+
+html, body, #app {
+  font-size: 14px;
+  height: 100%;
+  line-height: 1.2;
+  font-weight: 400;
+  background-color: var(--slate-900);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* When content overflows, scrollbar visible */
+// .<CLASS_NAME>::-webkit-scrollbar {
+//   width: 0.7rem;
+//   height: 0.7rem;
+// }
+
+// .<CLASS_NAME>::-webkit-scrollbar-track {
+//   background-color: #f5f5f5;
+// }
+  
+// .<CLASS_NAME>::-webkit-scrollbar-thumb {
+//   background: #aaa;
+//   border-radius: 0.25rem;
+// }
