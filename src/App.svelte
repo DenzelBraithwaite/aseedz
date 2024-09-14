@@ -2,6 +2,9 @@
   // Hooks
   import { onMount } from 'svelte';
 
+  // Transition
+  import { blur } from 'svelte/transition';
+
   // Modules/Helpers
   import Typed from 'typed.js';
   import { World } from './lib/helpers/index';
@@ -11,192 +14,47 @@
   onMount(() => {
     typed = new Typed('#terminal-text', {
       strings: [
-        `Remaining Actions: ${saveFile.remainingActions}<br>
-        Days Passed: ${saveFile.dayCount}<br>
-        Current Day: ${saveFile.currentDay}<br>
-        Day of the year: ${saveFile.currentDayIndex}<br>
-        Current Week: ${saveFile.currentWeek}<br>
-        Current Month: ${saveFile.currentMonth} Moon<br>
-        Month of the Year: ${saveFile.currentMonthIndex}<br>
-        Current Year: ${saveFile.currentYearIndex} - ${saveFile.currentYear}<br>
-        Current Season: ${saveFile.currentSeason}<br>
+        `Remaining Actions: ${currentWorld.remainingActions}<br>
+        Days Passed: ${currentWorld.dayCount}<br>
+        Current Day: ${currentWorld.currentDay}<br>
+        Day of the year: ${currentWorld.currentDayIndex}<br>
+        Current Week: ${currentWorld.currentWeek}<br>
+        Current Month: ${currentWorld.currentMonth} Moon<br>
+        Month of the Year: ${currentWorld.currentMonthIndex}<br>
+        Current Year: ${currentWorld.currentYearIndex} - ${currentWorld.currentYear}<br>
+        Current Season: ${currentWorld.currentSeason}<br>
         Press Start to continue...`
       ],
-      typeSpeed: 15,
+      typeSpeed: 10,
     });
-  })
+  });
 
-  const saveFile = new World();
-  console.log(saveFile);
+  const currentWorld = new World({});
+  let terminalVisible = true;
+  console.log(currentWorld);
 
-  // TODO: Delete, just a temp reminder
-//   var typed = new Typed('#element', {
-//   /**
-//    * @property {array} strings strings to be typed
-//    * @property {string} stringsElement ID of element containing string children
-//    */
-//   strings: [
-//     'These are the default values...',
-//     'You know what you should do?',
-//     'Use your own!',
-//     'Have a great day!',
-//   ],
-//   stringsElement: null,
+  function startGame(): void {
+    terminalVisible = false;
+    setTimeout(() => {
+      terminalVisible = true;
+      currentWorld.startGame();
+    }, 2000)
+  }
 
-//   /**
-//    * @property {number} typeSpeed type speed in milliseconds
-//    */
-//   typeSpeed: 0,
-
-//   /**
-//    * @property {number} startDelay time before typing starts in milliseconds
-//    */
-//   startDelay: 0,
-
-//   /**
-//    * @property {number} backSpeed backspacing speed in milliseconds
-//    */
-//   backSpeed: 0,
-
-//   /**
-//    * @property {boolean} smartBackspace only backspace what doesn't match the previous string
-//    */
-//   smartBackspace: true,
-
-//   /**
-//    * @property {boolean} shuffle shuffle the strings
-//    */
-//   shuffle: false,
-
-//   /**
-//    * @property {number} backDelay time before backspacing in milliseconds
-//    */
-//   backDelay: 700,
-
-//   /**
-//    * @property {boolean} fadeOut Fade out instead of backspace
-//    * @property {string} fadeOutClass css class for fade animation
-//    * @property {boolean} fadeOutDelay Fade out delay in milliseconds
-//    */
-//   fadeOut: false,
-//   fadeOutClass: 'typed-fade-out',
-//   fadeOutDelay: 500,
-
-//   /**
-//    * @property {boolean} loop loop strings
-//    * @property {number} loopCount amount of loops
-//    */
-//   loop: false,
-//   loopCount: Infinity,
-
-//   /**
-//    * @property {boolean} showCursor show cursor
-//    * @property {string} cursorChar character for cursor
-//    * @property {boolean} autoInsertCss insert CSS for cursor and fadeOut into HTML <head>
-//    */
-//   showCursor: true,
-//   cursorChar: '|',
-//   autoInsertCss: true,
-
-//   /**
-//    * @property {string} attr attribute for typing
-//    * Ex: input placeholder, value, or just HTML text
-//    */
-//   attr: null,
-
-//   /**
-//    * @property {boolean} bindInputFocusEvents bind to focus and blur if el is text input
-//    */
-//   bindInputFocusEvents: false,
-
-//   /**
-//    * @property {string} contentType 'html' or 'null' for plaintext
-//    */
-//   contentType: 'html',
-
-//   /**
-//    * Before it begins typing
-//    * @param {Typed} self
-//    */
-//   onBegin: (self) => {},
-
-//   /**
-//    * All typing is complete
-//    * @param {Typed} self
-//    */
-//   onComplete: (self) => {},
-
-//   /**
-//    * Before each string is typed
-//    * @param {number} arrayPos
-//    * @param {Typed} self
-//    */
-//   preStringTyped: (arrayPos, self) => {},
-
-//   /**
-//    * After each string is typed
-//    * @param {number} arrayPos
-//    * @param {Typed} self
-//    */
-//   onStringTyped: (arrayPos, self) => {},
-
-//   /**
-//    * During looping, after last string is typed
-//    * @param {Typed} self
-//    */
-//   onLastStringBackspaced: (self) => {},
-
-//   /**
-//    * Typing has been stopped
-//    * @param {number} arrayPos
-//    * @param {Typed} self
-//    */
-//   onTypingPaused: (arrayPos, self) => {},
-
-//   /**
-//    * Typing has been started after being stopped
-//    * @param {number} arrayPos
-//    * @param {Typed} self
-//    */
-//   onTypingResumed: (arrayPos, self) => {},
-
-//   /**
-//    * After reset
-//    * @param {Typed} self
-//    */
-//   onReset: (self) => {},
-
-//   /**
-//    * After stop
-//    * @param {number} arrayPos
-//    * @param {Typed} self
-//    */
-//   onStop: (arrayPos, self) => {},
-
-//   /**
-//    * After start
-//    * @param {number} arrayPos
-//    * @param {Typed} self
-//    */
-//   onStart: (arrayPos, self) => {},
-
-//   /**
-//    * After destroy
-//    * @param {Typed} self
-//    */
-//   onDestroy: (self) => {},
-// });
 </script>
 
 <main class="main-content">
-  <div class="terminal-screen">
-    <p id="terminal-text"></p>
-  </div>
+  {#if terminalVisible}
+    <div transition:blur={{duration: 2000}} class="terminal-screen">
+      <p id="terminal-text"></p>
+      <button on:click={startGame} class="btn-terminal">Start</button>
+    </div>
+  {/if}
 </main>
 
 <style lang="scss">
   .main-content {
-    height: 100vh; // dvh not as supported (not at all in firefox)
+    height: 100vh; // dynamic viewport units not as supported (not at all in firefox)
     width: 100vw;
 
     display: flex;
@@ -205,6 +63,7 @@
   }
 
   .terminal-screen {
+    position: relative;
     background-color: #121212;
     height: 90%;
     width: 90%;
@@ -213,6 +72,34 @@
     border-radius: 2px;
     padding: 4px;
     overflow-wrap: break-word;
+    transition: all 0.5s ease-out;
+  }
+
+  .btn-terminal {
+    cursor: pointer;
+    outline: none;
+    border: 2px solid var(--white);
+    color: var(--white);
+    background: none;
+    font-weight: bold;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-radius: 4px;
+    transition: all 0.2s ease-out;
+
+    position: absolute;
+    bottom: 30px;
+    right: 50%;
+    transform: translateX(50%);
+
+    &:hover {
+      border: 2px solid var(--slate-900);
+      color: var(--slate-900);
+      background-color: var(--white);
+      border-style: double;
+      border-width: 4px;
+    }
   }
 
   #terminal-text {
