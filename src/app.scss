@@ -6,9 +6,13 @@
   --slate-600: #475569;
   --slate-500: #64748b;
   --slate-400: #94a3b8;
-  --white: #fefefe;
-  // --section-spacer: 2rem auto 7rem;
-  // --box-shadow: 0 0.25rem 0.5rem #00000014;
+  --white: #eee;
+  --black: #111;
+  --yellow: #cabd69; // For selected animation (flash of border color for feedback)
+  --border-radius-small: 4px;
+  --border-radius-med: 8px;
+  --border-radius-large: 100px;
+  --box-shadow-color: #00000055;
 
   color-scheme: light;
   font-synthesis: none;
@@ -46,7 +50,7 @@ html, body, #app {
   height: 100%;
   line-height: 1.2;
   font-weight: 400;
-  background-color: var(--slate-900);
+  background-color: var(--black);
 }
 
 *, *::before, *::after {
