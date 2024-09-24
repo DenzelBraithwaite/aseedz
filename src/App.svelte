@@ -9,10 +9,9 @@
   import { World } from './lib/helpers/index';
 
   // Components
-  import { Client, Terminal } from './lib/components/index';
+  import { Client } from './lib/components/index';
 
   const currentWorld = new World({});
-  let terminalVisible = true;
 
   onMount(() => {
     startGame();
@@ -21,24 +20,18 @@
   function startGame(): void {
     currentWorld.startGame();
   }
-
-  function closeTerminal(): void {
-    terminalVisible = false;
-  }
 </script>
 
 <main class="main-content">
-  {#if terminalVisible}
-      <Terminal on:close={closeTerminal}/>
-    {:else}
-      <Client />
-  {/if}
+  <Client />
 </main>
 
 <style lang="scss">
   .main-content {
     height: 100vh; // dynamic viewport units not as supported (not at all in firefox)
     width: 100vw;
+    padding: 8px;
+    background-color: var(--black);
 
     display: flex;
     justify-content: center;
