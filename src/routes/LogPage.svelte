@@ -2,21 +2,23 @@
   // transitions
   import { blur } from 'svelte/transition';
 
+  // Modules / Components
+  import { Button, Terminal } from '../lib/components';
 </script>
 
 <div in:blur class="main-content">
-  <h1>Log page!</h1>
-
+  <Terminal title="Log Page" terminalColor="grey" />
+  <div class="page-menu">
+    <Button btnType="terminal-btn">Display Day</Button>
+  </div>
 </div>
 
 <style lang="scss">
   .main-content {
-    height: 100%;
     width: 100%;
-    border: 6px solid #ddd;
-    border-top: 16px solid #ddd;
-    border-radius: 4px;
-    padding: 8px;
-    background-color: #dddddd2e;
+    height: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>

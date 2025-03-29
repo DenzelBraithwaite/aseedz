@@ -2,21 +2,25 @@
   // transitions
   import { blur } from 'svelte/transition';
 
+  // Modules / Components
+  import { Button, Terminal } from '../lib/components';
 </script>
 
 <div in:blur class="main-content">
-  <h1>Plant page!</h1>
-
+  <Terminal title="Plant Page" terminalColor="green" />
+  <div class="page-menu">
+    <Button btnType="page-menu-btn__green">Plant</Button>
+    <Button btnType="page-menu-btn__green">Harvest</Button>
+    <Button btnType="page-menu-btn__green">Display Day</Button>
+  </div>
 </div>
 
 <style lang="scss">
   .main-content {
-    height: 100%;
     width: 100%;
-    border: 6px solid #279821;
-    border-top: 16px solid #279821;
-    border-radius: 4px;
-    padding: 8px;
-    background-color: #2798212e;
+    height: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>

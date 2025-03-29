@@ -93,7 +93,7 @@
   }
 
   .sidebar-expanded {
-    width: 400px; // fixed for transition... doesn't react to % units
+    width: 300px; // fixed for transition... doesn't react to % units
   }
   
   .rotate {

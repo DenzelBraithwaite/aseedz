@@ -113,6 +113,24 @@ export default class World {
       Month of the Year: ${this.currentMonthIndex}<br>
       Current Year: ${this.currentYearIndex} - ${this.currentYear}<br>
       Current Season: ${this.currentSeason}<br>
+      dumy text to fill screen<br>
+      for<br>
+      scrollbar<br>
+      .<br>
+      .<br>
+      .<br>
+      .<br>
+      .<br>
+      .<br>
+      .<br>
+      .<br>
+      .<br>
+      .<br>
+      .<br>
+      .<br>
+      .<br>
+      .<br>
+      .
       `,
     ];
     
@@ -137,7 +155,7 @@ export default class World {
     this.plantedSeeds.forEach(seed => {
       if (seed.numOfDaysRemaining === 0) {
         seed.isGrown = true;
-        this.playerInventory = [...this.playerInventory, {...seed}]
+        this.player.playerInventory = [...this.player.playerInventory, {...seed}];
         const index = this.plantedSeeds.indexOf(seed);
         this.plantedSeeds.splice(index, 1);
       }

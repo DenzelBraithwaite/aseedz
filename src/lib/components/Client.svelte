@@ -38,24 +38,29 @@
 
 <style lang="scss">
   .client {
-    $background: var(--slate-950);
     position: relative;
-    height: 100%;
-    width: 100%;
+    $background: var(--slate-950);
+    height: 100vh;
+    width: 100vw;
     background-color: $background;
     transition: all 0.5s ease-out; // Match this to sidebar transition speed (or don't 😅)
 
     display: grid;
-    grid-template-columns: 400px minmax(70%, 1fr); // fixed for transition... doesn't react to % units
+    grid-template-columns: 300px minmax(70%, 1fr); // fixed for transition... doesn't react to % units
   }
 
   .screen {
+    position: relative;
     padding: 24px 40px;
     grid-column: 2 / span 1;
     box-shadow: inset 0 0 12px var(--box-shadow-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .client-collapsed {
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 70px 1fr;
   }
 </style>
